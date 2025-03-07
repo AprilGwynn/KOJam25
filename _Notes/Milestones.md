@@ -1,6 +1,6 @@
-## Functional Anything:
-- camera inside map ring object that rotates
-- WebGL 
+## ~~Functional Anything:~~
+- ~~camera inside map ring object that rotates~~
+- ~~WebGL~~ 
 ## control an object
 - set up unity controls to move character left and right with A and D, maybe mappable to controller?
 ## snap to lanes, speed control
