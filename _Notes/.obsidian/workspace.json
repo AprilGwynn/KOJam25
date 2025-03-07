@@ -155,8 +155,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -168,7 +167,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "fdd2340730696f94",
+  "active": "ed8ffd6fc344226d",
   "lastOpenFiles": [
     "Idea Brainstorming.md",
     "Milestones.md",
