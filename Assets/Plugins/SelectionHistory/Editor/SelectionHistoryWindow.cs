@@ -61,7 +61,7 @@ public class SelectionHistoryWindow : EditorWindow
     private static bool muteRecording;
     private int selectedIndex = -1;
 
-    private bool hasFocus;
+    new private bool hasFocus;
     
     private void OnSelectionChange()
     {
