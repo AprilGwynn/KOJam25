@@ -56,9 +56,16 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("hit somethin");
         Interactable theOther = other.gameObject.GetComponent<Interactable>();
-        if (theOther)
+        if (theOther && theOther.itemType == Interactable.InteractableType.ring)
         {
             CollectRing();
+            theOther.CollideHappens();
+        }
+
+        if (theOther && theOther.itemType == Interactable.InteractableType.wall)
+        {
+            mapRing.Stop(collisionDeceleration);
+            PlayerValues.HitObstacle(theOther);
             theOther.CollideHappens();
         }
     }

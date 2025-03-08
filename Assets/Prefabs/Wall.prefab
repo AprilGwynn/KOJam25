@@ -25,6 +25,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4563331548667059081, guid: b3a740d978df729488d29106fe0add13,
         type: 3}
+      propertyPath: itemType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563331548667059081, guid: b3a740d978df729488d29106fe0add13,
+        type: 3}
       propertyPath: myCollider
       value: 
       objectReference: {fileID: 0}

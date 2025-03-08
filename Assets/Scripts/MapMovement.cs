@@ -15,7 +15,9 @@ public class MapMovement : MonoBehaviour
     public int sizeX = 1;
     public float CurrRotSpeed = 0;
     private float CurrAcceleration = 0f;
-    
+
+    private float playerAccelCache = 0f;
+    private float playerDecelCache = 0f;
 
     public PlayerController player;
     // Start is called before the first frame update
@@ -26,12 +28,14 @@ public class MapMovement : MonoBehaviour
 
     public void StartAccelerating(float acceleration)
     {
-        CurrAcceleration = acceleration;
+        playerAccelCache = acceleration;
+        CurrAcceleration = playerAccelCache;
     }
 
     public void Stop(float deceleration)
     {
-        CurrAcceleration = -deceleration;
+        playerDecelCache = deceleration;
+        CurrAcceleration = -playerDecelCache;
     }
     // public void StopHard()
     // {
@@ -48,11 +52,12 @@ public class MapMovement : MonoBehaviour
             CurrRotSpeed += CurrAcceleration * Time.deltaTime;
         }
 
-        // stopping if slowed to 0 speed or more
+        // stopping if slowed to 0 speed or more (then starting again)
         if (CurrRotSpeed < 0)
         {
-            Debug.Log("RotSpeed is less than 0, setting to 0.");
+            Debug.Log("RotSpeed is less than 0, setting to 0 and restarting accel.");
             CurrRotSpeed = 0;
+            StartAccelerating(playerAccelCache);
         }
         
         this.gameObject.transform.Rotate(Vector3.right, CurrRotSpeed*Time.deltaTime);

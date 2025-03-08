@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Interactable : MonoBehaviour
 {
-    public InteractableType type = InteractableType.ring;
+    public InteractableType itemType = InteractableType.ring;
     private bool isNewItem = false;
     public Collider Collider;
     public Renderer Renderer; // skinned / static mesh renderer

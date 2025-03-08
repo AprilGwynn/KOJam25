@@ -11,11 +11,15 @@
 - ~~*just stuck to map ring prefab*~~
 - ~~win state, collect 20 rings for "you win" modal~~
 ## ~~attach objects to map ring nicely (dev tool)~~
-## hurt by obstacles 
-- includes health system, health bar hud
-- hitboxes that reduce health but disappear for now
-- rings now increase health
-- fail state, you die and restart (modal)
+## ~~hurt by obstacles~~ 
+- ~~includes health system, health bar hud~~
+- ~~hitboxes that reduce health but disappear for now~~
+- ~~rings now increase health~~
+- ~~fail state, you die (modal)~~
+## Game restart
+- puts you back at the beginning
+- replaces all walls and rings
+- sets HP to max and ring count to 0
 ## ring dropping
 - hitting now slows "you" down, gradually regain speed
 - invul timer
