@@ -1,8 +1,8 @@
 ## ~~Functional Anything:~~
 - ~~camera inside map ring object that rotates~~
 - ~~WebGL~~ 
-## control an object
-- set up unity controls to move character left and right with A and D, maybe mappable to controller?
+## ~~control an object~~
+- ~~set up unity controls to move character left and right with A and D, maybe mappable to controller?~~
 ## snap to lanes, speed control
 - *as before, character stays put but ring stops and starts (with w and s for now)*
 ### collect rings
