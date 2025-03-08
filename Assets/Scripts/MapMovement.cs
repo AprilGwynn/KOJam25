@@ -16,7 +16,6 @@ public class MapMovement : MonoBehaviour
     public float CurrRotSpeed = 0;
     private float CurrAcceleration = 0f;
     
-    private bool accelerating = false;
 
     public PlayerController player;
     // Start is called before the first frame update
@@ -27,13 +26,11 @@ public class MapMovement : MonoBehaviour
 
     public void StartAccelerating(float acceleration)
     {
-        accelerating = true;
         CurrAcceleration = acceleration;
     }
 
     public void Stop(float deceleration)
     {
-        accelerating = false;
         CurrAcceleration = -deceleration;
     }
     // public void StopHard()

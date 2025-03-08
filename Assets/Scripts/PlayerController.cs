@@ -12,13 +12,14 @@ using UnityEngine.Serialization;
 public class PlayerController : MonoBehaviour
 {
     // public GameObject playerObject;
+    public PlayerValues PlayerValues;
     public MapMovement mapRing;
     [FormerlySerializedAs("controlz")] public InputActionAsset controls;
     private InputAction moveeActionDebug;
     private InputAction moveLeftAction;
     private InputAction moveRightAction;
     
-    public float moveSpeedX = 3f;
+    // public float moveSpeedX = 3f;
 
     public float acceleration = 10f;
     public float collisionDeceleration = 50f;
@@ -50,6 +51,22 @@ public class PlayerController : MonoBehaviour
         moveRightAction.Disable();
     }
 
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("hit somethin");
+        Interactable theOther = other.gameObject.GetComponent<Interactable>();
+        if (theOther)
+        {
+            CollectRing();
+            theOther.CollideHappens();
+        }
+    }
+
+    private void CollectRing()
+    {
+        PlayerValues.AddRings(1);
+    }
     // Update is called once per frame
     void Update()
     {

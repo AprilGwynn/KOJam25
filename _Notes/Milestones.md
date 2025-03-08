@@ -3,12 +3,12 @@
 - ~~WebGL~~ 
 ## ~~control an object~~
 - ~~set up unity controls to move character left and right with A and D, maybe mappable to controller?~~
-## snap to lanes, speed control
-- *as before, character stays put but ring stops and starts (with w and s for now)*
+## ~~snap to lanes, speed control~~
+- ~~*as before, character stays put but ring stops and starts (with w and s for now)*~~
 ### collect rings
-- includes ring count hud
-- hitbox that increases ring count, disappear
-- *just stuck to map ring prefab*
+- ~~includes ring count hud~~
+- ~~hitbox that increases ring count, disappear~~
+- ~~*just stuck to map ring prefab*~~
 - win state, collect 20 rings for "you win" modal
 ## attach objects to map ring nicely (dev tool)
 ## hurt by obstacles 
