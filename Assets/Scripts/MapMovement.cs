@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -12,7 +13,7 @@ public class MapMovement : MonoBehaviour
     // public const float DEFAULT_DECEL_COLLIDE = 7f;
     
     public int laneCount = 3;
-    public int sizeX = 1;
+    public float sizeX = 1;
     public float CurrRotSpeed = 0;
     private float CurrAcceleration = 0f;
 
@@ -42,6 +43,13 @@ public class MapMovement : MonoBehaviour
     //     accelerating = false;
     //     CurrRotSpeed = 0;
     // } 
+
+    public void ReInitMapMovement()
+    {
+        CurrRotSpeed = 0;
+        CurrAcceleration = 0;
+        this.gameObject.transform.rotation = Quaternion.Euler(Vector3.zero);
+    }
     // Update is called once per frame
     void Update()
     {

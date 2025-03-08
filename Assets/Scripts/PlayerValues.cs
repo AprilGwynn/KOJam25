@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class PlayerValues : MonoBehaviour
 {
+    public int maxHP = 50;
+    
     public GameStateController GameStateController;
     public int DebugWinThreshold = 5;
     public TMP_Text ringValueHUD;
@@ -14,8 +16,9 @@ public class PlayerValues : MonoBehaviour
 
     public Slider HPsliderHUD;
     // public GameObject WinHUD;
-    private int _currRings = 0;
-    private float _currHealth = 50;
+    private int _currRings;
+    private float _currHealth;
+
 
     private const float HEALTH_PER_RING = 5;
     private const float DAMAGE_PER_WALL = 15;
@@ -48,11 +51,12 @@ public class PlayerValues : MonoBehaviour
         CheckForWinOrDeath();
         UpdateHud();
 
-        DropRings(takenRings);
+        // DropRings(takenRings);
     }
 
     private void DropRings(int takenRings)
     {
+        GameStateController.RestartGame();
         throw new NotImplementedException();
     }
     private void CheckForWinOrDeath()
@@ -78,9 +82,17 @@ public class PlayerValues : MonoBehaviour
     {
         HPsliderHUD.maxValue = _currHealth;
     }
+
+    public void InitValues()
+    {
+        _currRings = 0;
+        _currHealth = maxHP;
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
+        InitValues();
         InitHud();
         UpdateHud();
     }

@@ -13,8 +13,8 @@ public class MapRingAssembler : MonoBehaviour
 {
     public GameObject objectsParent;
     public GameObject itemsParent;
-    private List<GameObject> _objectList;
-    private List<GameObject> _itemList;
+    internal List<GameObject> _objectList;
+    internal List<GameObject> _itemList;
     public float yOffset = 4;
     public bool autoUpdateYOffset = false;
     

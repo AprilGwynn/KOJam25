@@ -34,7 +34,7 @@ public class Interactable : MonoBehaviour
         
     }
 
-    private void ReInitItem()
+    public void ReInitItem()
     {
         if (!isNewItem)
         {

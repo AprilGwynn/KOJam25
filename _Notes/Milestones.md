@@ -16,10 +16,10 @@
 - ~~hitboxes that reduce health but disappear for now~~
 - ~~rings now increase health~~
 - ~~fail state, you die (modal)~~
-## Game restart
-- puts you back at the beginning
-- replaces all walls and rings
-- sets HP to max and ring count to 0
+## ~~Game restart~~
+- ~~puts you back at the beginning~~
+- ~~replaces all walls and rings~~
+- ~~sets HP to max and ring count to 0~~
 ## ring dropping
 - hitting now slows "you" down, gradually regain speed
 - invul timer

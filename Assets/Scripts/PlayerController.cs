@@ -31,9 +31,13 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LanePos = mapRing.laneCount / 2;
+        InitLanePos();
     }
 
+    public void InitLanePos()
+    {
+        LanePos = mapRing.laneCount / 2;
+    }
     private void OnEnable()
     {
         moveeActionDebug = controls.FindAction("Movee");
