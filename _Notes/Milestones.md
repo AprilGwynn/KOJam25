@@ -9,8 +9,8 @@
 - ~~includes ring count hud~~
 - ~~hitbox that increases ring count, disappear~~
 - ~~*just stuck to map ring prefab*~~
-- win state, collect 20 rings for "you win" modal
-## attach objects to map ring nicely (dev tool)
+- ~~win state, collect 20 rings for "you win" modal~~
+## ~~attach objects to map ring nicely (dev tool)~~
 ## hurt by obstacles 
 - includes health system, health bar hud
 - hitboxes that reduce health but disappear for now
