@@ -35,6 +35,7 @@ public class GameStateController : MonoBehaviour
         WinScreen.SetActive(false);
         LoseScreen.SetActive(false);
         playerValues.UpdateHud();
+        player.mapRing.StartAccelerating(player.acceleration);
     }
     
     // Start is called before the first frame update

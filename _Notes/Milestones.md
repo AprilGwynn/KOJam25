@@ -24,8 +24,8 @@
 - ~~hitting now slows "you" down, gradually regain speed~~
 - ~~invul timer~~
 - ~~rings drop on the ground to be picked up later~~
-## Full playable map
-- just a map with obstacles and rings placed around full thing, enough to win
+## ~~Full playable map~~
+- ~~just a map with obstacles and rings placed around full thing, enough to win~~
 ==!!!!!MVP HERE ^ ^ plus maybe art pass)!!!!!!==
 ## art pass
 - skinned mesh renderer protag OR car..
@@ -36,3 +36,5 @@
 	- juiced animation for hitting obstacle is maybe worth
 - actual object(s) as obstacle
 - scenery (clearly non-gameplay) like trees, to emphasize map ring
+## Smooth Movement
+- forgiving (moving hitbox can collect rings but not hit walls?)
