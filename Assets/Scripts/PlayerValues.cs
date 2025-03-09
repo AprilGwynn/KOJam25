@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class PlayerValues : MonoBehaviour
 {
@@ -13,11 +15,16 @@ public class PlayerValues : MonoBehaviour
     public int DebugWinThreshold = 5;
     public TMP_Text ringValueHUD;
     public Animator ringHudAnimator;
-
+    // private GameObject mapRing;
+    public PlayerController _playerController;
+    
     public Slider HPsliderHUD;
     // public GameObject WinHUD;
     private int _currRings;
     private float _currHealth;
+    public bool isInvul = false;
+
+    public GameObject ringPrefab;
 
 
     private const float HEALTH_PER_RING = 5;
@@ -40,6 +47,7 @@ public class PlayerValues : MonoBehaviour
             TakeRings(RINGS_LOST_PER_WALL);
             _currHealth -= DAMAGE_PER_WALL;
             UpdateHud();
+            StartCoroutine(Invul(1));
         }
     }
 
@@ -51,13 +59,31 @@ public class PlayerValues : MonoBehaviour
         CheckForWinOrDeath();
         UpdateHud();
 
-        // DropRings(takenRings);
+        DropRings(takenRings);
     }
 
     private void DropRings(int takenRings)
     {
-        GameStateController.RestartGame();
-        throw new NotImplementedException();
+        Vector3 spawnPos = this.transform.position;
+        GameObject newRing; 
+        for (int j = 0; j < takenRings; j++)
+        {
+            newRing = Instantiate(ringPrefab, spawnPos, Quaternion.identity, _playerController.mapRing.transform);
+            newRing.transform.localScale *= 0.65f;
+            spawnPos += new Vector3(Random.Range(-.1f, .1f), Random.Range(-.1f, .1f), Random.Range(-.1f, .1f));
+
+            newRing.GetComponent<Interactable>().isNewItem = true;
+        }
+        
+    }
+
+    private IEnumerator Invul(float duration)
+    {
+        isInvul = true;
+        _playerController.playerAnimator.SetBool("isInvul", true);
+        yield return new WaitForSeconds(duration);
+        isInvul = false;
+        _playerController.playerAnimator.SetBool("isInvul", false);
     }
     private void CheckForWinOrDeath()
     {
@@ -95,6 +121,7 @@ public class PlayerValues : MonoBehaviour
         InitValues();
         InitHud();
         UpdateHud();
+        // _playerController.mapRing = this.GetComponent<PlayerController>().mapRing.GameObject();
     }
 
     // Update is called once per frame

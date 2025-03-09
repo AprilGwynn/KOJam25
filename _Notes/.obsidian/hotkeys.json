@@ -49,6 +49,13 @@
         "Mod"
       ],
       "key": "-"
+    },
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "-"
     }
   ],
   "window:reset-zoom": [

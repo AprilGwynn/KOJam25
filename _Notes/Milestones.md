@@ -20,10 +20,10 @@
 - ~~puts you back at the beginning~~
 - ~~replaces all walls and rings~~
 - ~~sets HP to max and ring count to 0~~
-## ring dropping
-- hitting now slows "you" down, gradually regain speed
-- invul timer
-- rings drop on the ground to be picked up later
+## ~~ring dropping~~
+- ~~hitting now slows "you" down, gradually regain speed~~
+- ~~invul timer~~
+- ~~rings drop on the ground to be picked up later~~
 ## Full playable map
 - just a map with obstacles and rings placed around full thing, enough to win
 ==!!!!!MVP HERE ^ ^ plus maybe art pass)!!!!!!==

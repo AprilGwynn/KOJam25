@@ -60,11 +60,11 @@ public class MapMovement : MonoBehaviour
             CurrRotSpeed += CurrAcceleration * Time.deltaTime;
         }
 
-        // stopping if slowed to 0 speed or more (then starting again)
-        if (CurrRotSpeed < 0)
+        // stopping if slowed to minimum speed or beyond (then starting again)
+        if (CurrRotSpeed < player.stopMinimumSpeed && CurrAcceleration < 0)
         {
-            Debug.Log("RotSpeed is less than 0, setting to 0 and restarting accel.");
-            CurrRotSpeed = 0;
+            Debug.Log("RotSpeed is less than stopMinimumSpeed, setting to stopMinimumSpeed and restarting accel.");
+            CurrRotSpeed = player.stopMinimumSpeed;
             StartAccelerating(playerAccelCache);
         }
         

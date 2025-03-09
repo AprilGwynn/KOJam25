@@ -74,6 +74,9 @@ public class MapRingAssembler : MonoBehaviour
             obj.transform.localPosition = new Vector3(0, -yOffset, 0);
             newEmpty.transform.rotation = Quaternion.Euler(new Vector3( -360 / ((float)_objectList.Count) * index++, 0, 0));
         }
+
+        Vector3 currPos = transform.position;
+        transform.position = new Vector3(transform.position.x, yOffset + 1 - 0.5f, transform.position.z);
     }
     
     // Update is called once per frame

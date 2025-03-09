@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 public class Interactable : MonoBehaviour
 {
     public InteractableType itemType = InteractableType.ring;
-    private bool isNewItem = false;
+    public bool isNewItem = false;
     public Collider Collider;
     public Renderer Renderer; // skinned / static mesh renderer
     public GameObject CollectParticle; // a gameobject assumed to have a particle component set to "play on Awake"

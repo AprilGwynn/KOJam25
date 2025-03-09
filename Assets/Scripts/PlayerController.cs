@@ -12,7 +12,8 @@ using UnityEngine.Serialization;
 public class PlayerController : MonoBehaviour
 {
     // public GameObject playerObject;
-    public PlayerValues PlayerValues;
+    public PlayerValues playerValues;
+    public Animator playerAnimator;
     public MapMovement mapRing;
     [FormerlySerializedAs("controlz")] public InputActionAsset controls;
     private InputAction moveeActionDebug;
@@ -25,7 +26,7 @@ public class PlayerController : MonoBehaviour
     public float collisionDeceleration = 50f;
     [Tooltip("The normal top running speed that the player reaches just by avoiding obstacles")]
     public float runSpeedTop = 50f;
-
+    public float stopMinimumSpeed = 10f; 
 
     public int LanePos;
     // Start is called before the first frame update
@@ -60,23 +61,25 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("hit somethin");
         Interactable theOther = other.gameObject.GetComponent<Interactable>();
-        if (theOther && theOther.itemType == Interactable.InteractableType.ring)
+        if (theOther && theOther.itemType == Interactable.InteractableType.ring
+            && !(playerValues.isInvul && theOther.isNewItem))
         {
             CollectRing();
             theOther.CollideHappens();
         }
 
-        if (theOther && theOther.itemType == Interactable.InteractableType.wall)
+        if (theOther && theOther.itemType == Interactable.InteractableType.wall
+            && !playerValues.isInvul)
         {
             mapRing.Stop(collisionDeceleration);
-            PlayerValues.HitObstacle(theOther);
+            playerValues.HitObstacle(theOther);
             theOther.CollideHappens();
         }
     }
 
     private void CollectRing()
     {
-        PlayerValues.AddRings(1);
+        playerValues.AddRings(1);
     }
     // Update is called once per frame
     void Update()
