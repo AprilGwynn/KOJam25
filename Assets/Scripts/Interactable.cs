@@ -43,6 +43,10 @@ public class Interactable : MonoBehaviour
             CollectParticle.SetActive(false);
             AudioSource.enabled = false;
         }
+        else
+        {
+            Destroy(this);
+        }
     }
 
     public enum InteractableType

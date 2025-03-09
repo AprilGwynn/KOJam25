@@ -70,9 +70,10 @@ public class PlayerValues : MonoBehaviour
         {
             newRing = Instantiate(ringPrefab, spawnPos, Quaternion.identity, _playerController.mapRing.transform);
             newRing.transform.localScale *= 0.65f;
-            spawnPos += new Vector3(Random.Range(-.1f, .1f), Random.Range(-.1f, .1f), Random.Range(-.1f, .1f));
+            spawnPos += new Vector3(Random.Range(-.05f, .05f), Random.Range(-.1f, .1f), Random.Range(-.01f, .01f));
 
             newRing.GetComponent<Interactable>().isNewItem = true;
+            _playerController.mapRingAssembler._itemList.Add(newRing);
         }
         
     }

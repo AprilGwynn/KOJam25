@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public PlayerValues playerValues;
     public Animator playerAnimator;
     public MapMovement mapRing;
+    public MapRingAssembler mapRingAssembler;
     [FormerlySerializedAs("controlz")] public InputActionAsset controls;
     private InputAction moveeActionDebug;
     private InputAction moveLeftAction;
