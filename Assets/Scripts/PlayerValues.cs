@@ -35,7 +35,8 @@ public class PlayerValues : MonoBehaviour
     {
         _currRings += rings;
         ringHudAnimator.SetTrigger("GetRing");
-        _currHealth += HEALTH_PER_RING;
+        var missingHP = maxHP - _currHealth;
+        _currHealth += Mathf.Min(missingHP,HEALTH_PER_RING);
         CheckForWinOrDeath();
         UpdateHud();
     }
