@@ -9273,7 +9273,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.17281654, y: 0.17281654, z: 0.17281654}
+  m_LocalScale: {x: 0.22780676, y: 0.22780676, z: 0.22780676}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1521397087}
@@ -10637,7 +10637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsParent: {fileID: 1670685423}
   itemsParent: {fileID: 753414321}
-  yOffset: 6.5
+  yOffset: 8.25
   autoUpdateYOffset: 0
 --- !u!4 &1308634180
 Transform:

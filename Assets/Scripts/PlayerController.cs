@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         InitLanePos();
+        mapRing.StartAccelerating(acceleration);
     }
 
     public void InitLanePos()
@@ -101,16 +102,16 @@ public class PlayerController : MonoBehaviour
         // Vector3 newMove = new Vector3(moveValue.x, 0, 0);
         // this.transform.position += newMove * (moveSpeedX * Time.deltaTime);
         
-        // Debug movement forward and back 
-        if (moveValue.y > 0.2)
-        {
-            mapRing.StartAccelerating(acceleration);
-        }
-
-        if (moveValue.y < -0.2)
-        {
-            mapRing.Stop(collisionDeceleration);
-        }
+        // // Debug movement forward and back 
+        // if (moveValue.y > 0.2)
+        // {
+        //     mapRing.StartAccelerating(acceleration);
+        // }
+        //
+        // if (moveValue.y < -0.2)
+        // {
+        //     mapRing.Stop(collisionDeceleration);
+        // }
 
         DebugPlacePlayerOnLane();
 
