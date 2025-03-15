@@ -23,3 +23,17 @@ android version?? lmfao no but forcing phone aspect ratio would be fuinny
 	- cyberpunk dark, protag is car and you're on a highway
 - in space?
 - lowpoly style lmao astral throne
+
+# Ideas v2
+## Walkies
+- make it easy to get to the end, but the challenge is doing it fast
+- you can jump now!
+- slow max speed, but ways to boost yourself above it like running and jumping down ramps, boost pads etc
+- rings temporarily prevent you from decelerating (bar buildup)
+- the focus becomes carrying momentum throughout the whole level
+- give them just one bunnyhop that keeps speed hehe
+- 3 lap time trial, lots of height variation in the map
+#### Walkies ""design principles""
+- No more things to collide with, all walls have ramps
+- Ring hitboxes are super forgiving
+- speed is quantized (walk, run, spin, super spin)
