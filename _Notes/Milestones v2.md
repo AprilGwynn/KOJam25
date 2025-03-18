@@ -1,5 +1,5 @@
-## Lerp left and right movement
-- make ring hitboxes really forgiving, but movement logic is still instant
+## ~~Lerp left and right movement~~
+- ~~make ring hitboxes really forgiving, but movement logic is still instant~~
 ## calculate map ring size
 - every current and future map part should still all be some standard unit (was 1)
 - *I think ramps and hills should still work with the old placement system*

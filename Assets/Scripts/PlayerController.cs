@@ -16,10 +16,8 @@ public class PlayerController : MonoBehaviour
     public Animator playerAnimator;
     public MapMovement mapRing;
     public MapRingAssembler mapRingAssembler;
-    [FormerlySerializedAs("controlz")] public InputActionAsset controls;
-    private InputAction moveeActionDebug;
-    private InputAction moveLeftAction;
-    private InputAction moveRightAction;
+    public InputActionAsset controls;
+    private InputAction moveAction;
     
     // public float moveSpeedX = 3f;
 
@@ -29,7 +27,14 @@ public class PlayerController : MonoBehaviour
     public float runSpeedTop = 50f;
     public float stopMinimumSpeed = 10f; 
 
-    public int LanePos;
+    public int currLane; // the index of which "lane" the player is in
+    private int prevLane = -1; // lane the player is currently leaving (set to -1 if not currently lerping between lanes) 
+    private float timeStartedLaneMove; // the time when the player started to move out of a lane
+    public float LANE_MOVE_LERP_TIME = 0.1f; // how long it takes to move between lanes (move visually, logic is instant)
+                // NOTE: maybe this is halved when moving twice?
+                // (to provide further clarity that the move is accepted) idk it's pretty fast already..
+    
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -39,23 +44,17 @@ public class PlayerController : MonoBehaviour
 
     public void InitLanePos()
     {
-        LanePos = mapRing.laneCount / 2;
+        currLane = mapRing.laneCount / 2;
     }
     private void OnEnable()
     {
-        moveeActionDebug = controls.FindAction("Movee");
-        moveLeftAction = controls.FindAction("MovLeft");
-        moveRightAction = controls.FindAction("MovRight");
-        moveeActionDebug.Enable();
-        moveLeftAction .Enable();
-        moveRightAction.Enable();
+        moveAction = controls.FindAction("Move");
+        moveAction.Enable();
     }
 
     private void OnDisable()
     {
-        moveeActionDebug.Disable();
-        moveLeftAction.Disable();
-        moveRightAction.Disable();
+        moveAction.Disable();
     }
 
     
@@ -86,41 +85,52 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (moveLeftAction.WasPressedThisFrame())
-        {
-            if (LanePos >= 1) LanePos -= 1;
-        }
-
-        if (moveRightAction.WasPressedThisFrame())
-        {
-            if (LanePos < mapRing.laneCount-1) LanePos += 1;
-        }
         
-        Vector2 moveValue = moveeActionDebug.ReadValue<Vector2>();
-        // Debug movement left and right smoothly
-        // Vector3 newMove = new Vector3(moveValue.x, 0, 0);
-        // this.transform.position += newMove * (moveSpeedX * Time.deltaTime);
-        
-        // // Debug movement forward and back 
-        // if (moveValue.y > 0.2)
-        // {
-        //     mapRing.StartAccelerating(acceleration);
-        // }
-        //
-        // if (moveValue.y < -0.2)
-        // {
-        //     mapRing.Stop(collisionDeceleration);
-        // }
+        Vector2 moveValue = moveAction.ReadValue<Vector2>();
+
+
+        if (moveAction.WasPerformedThisFrame())
+        {
+            prevLane = currLane;
+            timeStartedLaneMove = Time.time;
+            if (moveValue.x < -.1)
+            {
+                if (currLane >= 1) currLane -= 1;
+            }
+
+            if (moveValue.x > .1)
+            {
+                if (currLane < mapRing.laneCount - 1) currLane += 1;
+            }
+        }
 
         DebugPlacePlayerOnLane();
 
     }
 
+    // takes a lane index and returns its local X position 
+    private float LaneIndexToLanePos(int laneIndex)
+    {
+        float lanePosX = ((mapRing.sizeX / mapRing.laneCount) * laneIndex) -  mapRing.sizeX/2 + mapRing.sizeX/(mapRing.laneCount*2);
+        return lanePosX;
+    }
+
+    
     private void DebugPlacePlayerOnLane()
     {
-        // float posX = (((float)mapRing.sizeX / mapRing.laneCount) * LanePos) - (float)mapRing.sizeX/2;
-        float posX = (((float)mapRing.sizeX / mapRing.laneCount) * LanePos) - (float) mapRing.sizeX/2 + (float)mapRing.sizeX/(mapRing.laneCount*2);
-        this.transform.localPosition = new Vector3(posX, 0, 0);
+        
+        float startLanePosX = LaneIndexToLanePos(prevLane == -1 ? currLane : prevLane);
+        float targetLanePosX = LaneIndexToLanePos(currLane);
+
+
+        float laneCrossingProgress = (Time.time - timeStartedLaneMove) / LANE_MOVE_LERP_TIME;
+        float newX = Mathf.Lerp(startLanePosX, targetLanePosX,  laneCrossingProgress);
+        transform.localPosition = new Vector3(newX, transform.localPosition.y, transform.localPosition.z);
+        
+        if (laneCrossingProgress >= 1)
+        {// player has reached lane location
+            prevLane = -1;
+        }
+
     }
 }
